@@ -152,6 +152,7 @@ export default defineComponent({
     transform-origin: top center;
     transform: rotate(0deg);
     border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
 }
 
 .minute-hand {
@@ -164,6 +165,7 @@ export default defineComponent({
     transform-origin: top center;
     transform: rotate(0deg);
     border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
 }
 
 .center-dot {

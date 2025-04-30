@@ -13,17 +13,18 @@
             <div class="bg-slate-500 text-white px-4 py-2 rounded-xl text-xs md:text-base">
             Score: {{ score }}
             </div>
-            <div class="bg-slate-500 text-white px-4 py-2 rounded-xl text-xs md:text-base">
-            Time: {{ time }}
+            <div class="px-4 py-2 rounded-xl text-xs md:text-base flex items-center">
+                <UIcon :name="isPlaying ? 'i-lucide-timer' : 'i-lucide-timer-off'" class="mr-2" /> {{ time }}
             </div>
             <div class="bg-slate-500 text-white px-4 py-2 rounded-xl text-xs md:text-base">
             Round: {{ currentRound }}/{{ totalRounds }}
             </div>
         </div>
-        <div class="text-center text-lg font-semibold rounded-xl">
+        <div class="text-center text-lg font-semibold rounded-lg"
+            :class="{'bg-success/80 animate-success': !isPlaying && isAnswerCorrect, 'bg-error/80 animate-failure': !isPlaying && !isAnswerCorrect}">
             {{ isPlaying ? 'What time is it?' : (isAnswerCorrect ? 'Correct!' : `Wrong! It is ${gameHour}:${gameMinute < 10 ? '0' + gameMinute : gameMinute}`) }}
         </div>
-        <div class="flex justify-between items-center space-x-4">
+        <div class="flex justify-between items-center space-x-4" v-if="isPlaying">
             <USelect
                 v-model="userAnswerHours"
                 :items="Array.from({ length: 12 }, (_, i) => ({ value: i + 1, label: i + 1 }))"
@@ -160,5 +161,46 @@ const isAnswerCorrect = computed(() => {
 </script>
 
 <style scoped>
-/* Add any additional styles if needed */
+@keyframes animate-success {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-success {
+    position: relative;
+    animation: animate-success 0.6s ease-out forwards;
+}
+
+@keyframes animate-failure {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-failure {
+    position: relative;
+    animation: animate-failure 0.6s ease-out forwards;
+}
 </style>

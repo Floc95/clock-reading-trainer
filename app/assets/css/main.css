@@ -4,3 +4,11 @@
 html, body {
     height: 100%;
 }
+
+@layer base {
+    button,
+    [role="button"] {
+       @apply cursor-pointer;
+       @apply disabled:cursor-not-allowed;
+    }
+ }

@@ -18,7 +18,7 @@
                     :items="[{ label: '10', value: 10 }, { label: '15', value: 15 }, { label: '20', value: 20 }]">
                 </USelect>
             </div>
-            <div class="space-y-2">
+            <div class="space-y-2 mb-8">
                 <label class="block text-sm font-medium text-white-700">Preview</label>
                 <div class="justify-center flex items-center">
                     <Clock

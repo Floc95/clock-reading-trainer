@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="p-6 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-white/10 rounded-xl shadow-xl ring-2 ring-slate/10">
+        <UCard variant="subtle" class="max-w md:max-w-lg lg:max-w-md md:mx-auto">
             <GameSetup v-if="step === 'setup'" @setup="setupGame" />
             <GamePlay v-else-if="step === 'game'"
                 :currentRound="currentRound"
@@ -23,7 +23,7 @@
                 :total-time="elapsedSeconds"
                 @retry="retry"
                 @back="back" />
-        </div>
+        </UCard>
     </div>
 </template>
 

@@ -15,7 +15,11 @@
         </main>
 
         <footer class="container mx-auto shrink-0 p-4">
-            <p>&copy; 2025 Tic Tac Clock</p>
+            <p class="text-center text-sm text-gray-300 dark:text-gray-600">
+              <a href="https://florian.dev" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                florian.dev
+              </a>
+            </p>
         </footer>
     </div>
 </template>

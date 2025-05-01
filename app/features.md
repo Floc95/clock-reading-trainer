@@ -28,6 +28,11 @@
 - [] Redesign score board, it's lame
 - [] Explain difficuly level in game setup (i icon on the right of difficulty level ?)
 - [] Animation between steps (setup, play, score), fade-out fade-in ?
+- [] Redesign to look like GoalUI.png
+  - Deactivate Tailwind dark mode
+  - Fonts ideas:
+    - https://fonts.google.com/specimen/Chewy?preview.text=Tic%20Tac%20Clock&preview.size=52&categoryFilters=Feeling:%2FExpressive%2FPlayful
+    - https://fonts.google.com/specimen/Jua?preview.text=Tic%20Tac%20Clock%20&preview.size=52&categoryFilters=Feeling:%2FExpressive%2FPlayful
 
 # Useless futur ideas
 - [] Achievements (shown as left screen: https://dribbble.com/shots/21972659-Soccer-Live-Scores-App-EallaShot) - Find funnier names, maybe that unlock hidden clock skins ?

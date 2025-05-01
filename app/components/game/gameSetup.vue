@@ -2,6 +2,16 @@
     <div class="space-y-4">
         <h1 class="text-2xl font-bold text-center">Game setup</h1>
         <form @submit.prevent="setupGame" class="space-y-4">
+            <div class="justify-center flex items-center mb-8 mt-8">
+                <Clock
+                    :hour="12"
+                    :minutes="40"
+                    :showMinuteIndicators="showMinuteIndicators"
+                    :showHourIndicators="showHourIndicators"
+                    :showHourNumbers="showHourNumbers"
+                    :showClockBorder="showClockBorder"
+                />
+            </div>
             <div class="space-y-2">
                 <label for="difficulty" class="block text-sm font-medium text-white-700">Difficulty level</label>
                 <USelect
@@ -17,19 +27,6 @@
                     class="w-full"
                     :items="[{ label: '10', value: 10 }, { label: '15', value: 15 }, { label: '20', value: 20 }]">
                 </USelect>
-            </div>
-            <div class="space-y-2 mb-8">
-                <label class="block text-sm font-medium text-white-700">Preview</label>
-                <div class="justify-center flex items-center">
-                    <Clock
-                        :hour="12"
-                        :minutes="40"
-                        :showMinuteIndicators="showMinuteIndicators"
-                        :showHourIndicators="showHourIndicators"
-                        :showHourNumbers="showHourNumbers"
-                        :showClockBorder="showClockBorder"
-                    />
-                </div>
             </div>
             <UButton
                 class="w-full justify-center"

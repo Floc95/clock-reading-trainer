@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <GameManager class="md:mt-20"></GameManager>
+    <div class="flex grow">
+        <GameManager class="flex flex-col grow md:mt-10"></GameManager>
     </div>
 </template>
 

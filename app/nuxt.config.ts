@@ -1,7 +1,31 @@
+import { tr } from "@nuxt/ui/runtime/locale/index.js";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', '@nuxt/ui'],
-  css: ['~/assets/css/main.css']
+  css: ['~/assets/css/main.css'],
+  colorMode: {
+    preference: 'light'
+  },
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com',
+          crossorigin: ""
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Chewy&family=Capriola&display=swap'
+        }
+      ]
+    }
+  }
 })

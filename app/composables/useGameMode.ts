@@ -17,8 +17,8 @@ export function useGameMode() {
     const showHourNumbers = ref(true);
     const showClockBorder = ref(true);
 
-    const startGame = (totalRoundsValue: number, difficultyModeValue: string) => {
-        totalRounds.value = totalRoundsValue;
+    const startGame = (difficultyModeValue: string) => {
+        totalRounds.value = 10;
         difficultyMode.value = difficultyModeValue;
         score.value = 0;
         currentRound.value = 0;
@@ -28,6 +28,11 @@ export function useGameMode() {
         isPlaying.value = false;
         initClockSettings(); // Initialize clock settings based on difficulty mode
         nextRound();
+    };
+
+    const prepareGame = (difficultyModeValue: string) => {
+        difficultyMode.value = difficultyModeValue;
+        initClockSettings(); // Initialize clock settings based on difficulty mode
     };
 
     const resetGame = () => {
@@ -113,6 +118,7 @@ export function useGameMode() {
         showHourIndicators,
         showHourNumbers,
         showClockBorder,
+        prepareGame,
         startGame,
         resetGame,
         nextRound,

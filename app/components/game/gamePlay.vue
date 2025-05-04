@@ -1,26 +1,6 @@
 <template>
-    <div class="space-y-8">
-        <div class="justify-center flex items-center">
-            <Clock
-                :hour="gameHour"
-                :minutes="gameMinute"
-                :show-clock-border="showClockBorder"
-                :show-hour-indicators="showHourIndicators"
-                :show-minute-indicators="showMinuteIndicators"
-                :show-hour-numbers="showHourNumbers" />
-        </div>
-        <div class="flex justify-between items-center text-sm font-semibold">
-            <div class="bg-slate-500 text-white px-4 py-2 rounded-xl text-xs md:text-base">
-            Score: {{ score }}
-            </div>
-            <div class="px-4 py-2 rounded-xl text-xs md:text-base flex items-center">
-                <UIcon :name="isPlaying ? 'i-lucide-timer' : 'i-lucide-timer-off'" class="mr-2" /> {{ time }}
-            </div>
-            <div class="bg-slate-500 text-white px-4 py-2 rounded-xl text-xs md:text-base">
-            Round: {{ currentRound }}/{{ totalRounds }}
-            </div>
-        </div>
-        <div class="text-center text-lg font-semibold rounded-lg"
+    <div class="flex flex-col grow justify-between space-y-4">
+        <div class="text-center text-2xl font-semibold rounded-lg"
             :class="{'bg-success/80 animate-success': !isPlaying && isAnswerCorrect, 'bg-error/80 animate-failure': !isPlaying && !isAnswerCorrect}">
             {{ isPlaying ? 'What time is it?' : (isAnswerCorrect ? 'Correct!' : `Wrong! It is ${gameHour}:${gameMinute < 10 ? '0' + gameMinute : gameMinute}`) }}
         </div>
@@ -30,34 +10,40 @@
                 :items="Array.from({ length: 12 }, (_, i) => ({ value: i + 1, label: i + 1 }))"
                 placeholder="Hours"
                 class="w-full"
+                size="xl"
             />
             <USelect
                 v-model="userAnswerMinutes"
                 :items="Array.from({ length: 60 }, (_, i) => i).filter(i => i % 5 === 0).map(i => ({ value: i, label: i }))"
                 placeholder="Minutes"
                 class="w-full"
+                size="xl"
             />
         </div>
         <div class="flex justify-between mt-4">
-            <UButton
+            <!-- <UButton
                 @click="cancelRound"
-                variant="ghost"
-                color="neutral"
+                color="error"
+                size="xl"
             >
                 Cancel
-            </UButton>
+            </UButton> -->
             <UButton
                 @click="handleValidate"
                 v-if="isPlaying"
                 :disabled="userAnswerHours === null || userAnswerMinutes === null"
-                trailing-icon="i-lucide-check"
+                size="xl"
+                color="success"
+                :block="true"
             >
                 Validate
             </UButton>
             <UButton
                 @click="playNextRound"
                 v-if="!isPlaying"
-                trailing-icon="i-lucide-arrow-right"
+                size="xl"
+                color="primary"
+                :block="true"
             >
                 {{ currentRound >= totalRounds ? 'View score' : 'Next' }}
             </UButton>
@@ -80,6 +66,7 @@ const props = defineProps({
     },
     score: {
         type: Number,
+
         required: true
     },
     elapsedSeconds: {
@@ -145,12 +132,6 @@ const playNextRound = () => {
     userAnswerMinutes.value = null;
     emit('nextRound');
 };
-
-const time = computed(() => {
-    const minutes = Math.floor(elapsedSeconds.value / 60);
-    const seconds = elapsedSeconds.value % 60;
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-});
 
 // Computed properties checking if userAnswer is equal to gameHour and gameMinute
 const isAnswerCorrect = computed(() => {

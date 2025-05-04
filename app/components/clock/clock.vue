@@ -8,13 +8,20 @@
                 class="hour-indicator"
                 :style="getHourIndicatorStyle(n)"
             ></div>
+            <!-- <div
+                v-for="n in 60"
+                :key="'minute-' + n"
+                v-if="showMinuteIndicators && n % 5 !== 0"
+                class="minute-indicator"
+                :style="getMinuteIndicatorStyle(n)"
+            ></div> -->
             <div
                 v-for="n in 60"
                 :key="'minute-' + n"
-                v-if="showMinuteIndicators"
-                class="minute-indicator"
-                :style="getMinuteIndicatorStyle(n)"
-            ></div>
+                v-if="showMinuteIndicators">
+                <div class="minute-indicator" :style="getMinuteIndicatorStyle(n)"
+                 v-if="n % 5 !== 0"></div>
+            </div>
             <div
                 v-for="n in 12"
                 :key="'hour-number-' + n"
@@ -71,12 +78,12 @@ export default defineComponent({
     methods: {
         getHourIndicatorStyle(n: number): Record<string, string> {
             return {
-                transform: `rotate(${n * 30}deg) translateY(-98px)`,
+                transform: `rotate(${n * 30}deg) translateY(-146px)`,
             };
         },
         getMinuteIndicatorStyle(n: number): Record<string, string> {
             return {
-                transform: `rotate(${n * 6}deg) translateY(-98px)`,
+                transform: `rotate(${n * 6}deg) translateY(-146px)`,
             };
         },
         getHourHandStyle(hour: number, minutes: number): Record<string, string> {
@@ -93,7 +100,7 @@ export default defineComponent({
         },
         getHourNumberStyle(n: number): Record<string, string> {
             const angle = n * 30;
-            const radius = 75;
+            const radius = 110;
             const x = Math.sin((angle * Math.PI) / 180) * radius;
             const y = -Math.cos((angle * Math.PI) / 180) * radius;
             return {
@@ -106,11 +113,24 @@ export default defineComponent({
 
 <style scoped>
 .clock {
-    width: 200px;
-    height: 200px;
-    border: 4px solid #1f2937;
+    width: 350px;
+    height: 350px;
+    border: 16px solid #9e5cbd;
     border-radius: 50%;
     position: relative;
+    background-color: #fcf0cf;
+}
+
+.clock::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 8px solid #674090;
 }
 
 .clock-face {
@@ -122,90 +142,83 @@ export default defineComponent({
 
 .clock-hidden {
     border: none;
+    background-color: transparent;
+}
+
+.clock-hidden::after {
+    border: none;
 }
 
 .hour-indicator,
 .minute-indicator {
     position: absolute;
     width: 4px;
-    height: 10px;
-    background-color: #1f2937;
+    height: 12px;
+    background-color: #4a376d;
     top: 50%;
     left: calc(50% - 2px);
     transform-origin: top center;
-    border-radius: 0 0 10px 10px;
 }
 
 .minute-indicator {
     width: 2px;
-    height: 5px;
+    height: 10px;
     left: calc(50% - 1px);
+    border-radius: 10px;
+    background-color: #806ab5;
 }
 
 .hour-hand {
     position: absolute;
-    width: 6px;
-    height: 50px;
-    background-color: #1f2937;
+    width: 12px;
+    height: 65px;
+    background-color: #4a376d;
     top: 50%;
-    left: calc(50% - 3px);
+    left: calc(50% - 6px);
     transform-origin: top center;
     transform: rotate(0deg);
-    border-radius: 10px;
+    border-radius: 6px;
     transition: transform 0.5s ease-in-out;
 }
 
 .minute-hand {
     position: absolute;
-    width: 4px;
-    height: 70px;
-    background-color: #1f2937;
+    width: 12px;
+    height: 90px;
+    background-color: #4a376d;
     top: 50%;
-    left: calc(50% - 2px);
+    left: calc(50% - 6px);
     transform-origin: top center;
     transform: rotate(0deg);
-    border-radius: 10px;
+    border-radius: 6px;
     transition: transform 0.5s ease-in-out;
 }
 
 .center-dot {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background-color: #1f2937;
+    width: 32px;
+    height: 32px;
+    background-color: #fcf0cf;
     border-radius: 50%;
-    top: calc(50% - 4px);
-    left: calc(50% - 4px);
+    border: 10px solid #4a376d;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
 }
 
 .hour-number {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: calc(50% - 10px);
-    left: calc(50% - 10px);
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
     text-align: center;
-    font-size: 14px;
+    font-size: 34px;
     font-weight: bold;
-    color: #1f2937;
-}
-
-.dark .clock  {
-    border-color: white;
-}
-
-.dark .hour-indicator,
-.dark .minute-indicator,
-.dark .hour-hand,
-.dark .minute-hand,
-.dark .center-dot {
-    background-color: white;
-}
-
-.dark .hour-number {
-    color: white;
+    color: #4a376d;
+    font-weight: 600;
+    font-style: normal;
 }
 </style>

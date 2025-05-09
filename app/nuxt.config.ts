@@ -13,6 +13,30 @@ export default defineNuxtConfig({
     head: {
       link: [
         {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/favicon.png'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/favicon.png'
+        },
+        {
+          rel: 'apple-touch-icon',
+          type: 'image/png',
+          sizes: '180x180',
+          href: '/favicon.png'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '192x192',
+          href: '/favicon.png'
+        },
+        {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com'
         },
@@ -24,6 +48,16 @@ export default defineNuxtConfig({
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Chewy&family=Capriola&display=swap'
+        }
+      ],
+      meta: [
+        {
+          name: 'msapplication-TileImage',
+          content: '/favicon.png'
+        },
+        {
+          name: 'msapplication-TileColor',
+          content: '#ffffff'
         }
       ]
     }

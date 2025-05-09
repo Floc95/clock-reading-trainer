@@ -39,8 +39,6 @@ function setupGame() {
 
 watch([difficulty], () => {
     emit('setup', difficulty.value);
-    // resetGame();
-    // startGame(rounds.value, difficulty.value);
 });
 </script>
 

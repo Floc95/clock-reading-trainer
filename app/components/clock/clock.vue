@@ -8,13 +8,6 @@
                 class="hour-indicator"
                 :style="getHourIndicatorStyle(n)"
             ></div>
-            <!-- <div
-                v-for="n in 60"
-                :key="'minute-' + n"
-                v-if="showMinuteIndicators && n % 5 !== 0"
-                class="minute-indicator"
-                :style="getMinuteIndicatorStyle(n)"
-            ></div> -->
             <div
                 v-for="n in 60"
                 :key="'minute-' + n"

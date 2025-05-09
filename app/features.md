@@ -13,8 +13,8 @@
   - [X] Intermediate (no numbers, no minutes indicator)
   - [X] Advanced (no numbers, no minutes indicator, no hour indicator)
   - [X] Expert (no numbers, no minutes indicator, no hour indicator, no clock border)
-- [] Learn page with cheatsheet (12, 3, 6, 9)
-- [] About (why and goal)
+- [X] Learn page
+- [X] About (why and goal)
 - [X] Show preview of clock in game setup
 - [] When starting a game, backdrop + countdown from 3,2,1 then animate clock (set clock to 0 then actual time)
 
@@ -25,11 +25,11 @@
 - [] Create type for game difficulty string option
 - [X] Replace GameManager container with UCard (https://ui.nuxt.com/components/card)
 - [] Animation on score board, show lines one after the other
-- [] Redesign score board, it's lame
+- [X] Redesign score board, it's lame
 - [] Explain difficuly level in game setup (i icon on the right of difficulty level ?)
 - [] Animation between steps (setup, play, score), fade-out fade-in ?
 - [X] Redesign to look like GoalUI.png
-- [] Implement md:max-height for the gameManager div so it looks good on a computer
+- [X] Implement md:max-height for the gameManager div so it looks good on a computer
 
 # Useless futur ideas
 - [] Achievements (shown as left screen: https://dribbble.com/shots/21972659-Soccer-Live-Scores-App-EallaShot) - Find funnier names, maybe that unlock hidden clock skins ?

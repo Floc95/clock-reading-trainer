@@ -21,13 +21,6 @@
             />
         </div>
         <div class="flex justify-between mt-4">
-            <!-- <UButton
-                @click="cancelRound"
-                color="error"
-                size="xl"
-            >
-                Cancel
-            </UButton> -->
             <UButton
                 @click="handleValidate"
                 v-if="isPlaying"
@@ -53,7 +46,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import Clock from '@/components/clock/clock.vue';
 
 const props = defineProps({
     currentRound: {
@@ -61,15 +53,6 @@ const props = defineProps({
         required: true
     },
     totalRounds: {
-        type: Number,
-        required: true
-    },
-    score: {
-        type: Number,
-
-        required: true
-    },
-    elapsedSeconds: {
         type: Number,
         required: true
     },
@@ -85,22 +68,6 @@ const props = defineProps({
         type: Boolean,
         required: true
     },
-    showHourNumbers: {
-        type: Boolean,
-        required: true
-    },
-    showMinuteIndicators: {
-        type: Boolean,
-        required: true
-    },
-    showHourIndicators: {
-        type: Boolean,
-        required: true
-    },
-    showClockBorder: {
-        type: Boolean,
-        required: true
-    }
 });
 
 const emit = defineEmits<{
@@ -109,8 +76,7 @@ const emit = defineEmits<{
     (e: 'nextRound'): void
 }>();
 
-const { currentRound, totalRounds, score, elapsedSeconds, gameHour, gameMinute, isPlaying,
-    showHourNumbers, showMinuteIndicators, showHourIndicators, showClockBorder } = toRefs(props);
+const { currentRound, totalRounds, gameHour, gameMinute, isPlaying } = toRefs(props);
 
 const userAnswerHours = ref<number|null>(null);
 const userAnswerMinutes = ref<number|null>(null);
@@ -119,12 +85,6 @@ const handleValidate = () => {
     if (userAnswerHours.value !== null && userAnswerMinutes.value !== null) {
         emit('validateAnswer', userAnswerHours.value, userAnswerMinutes.value);
     }
-};
-
-const cancelRound = () => {
-    userAnswerHours.value = null;
-    userAnswerMinutes.value = null;
-    emit('cancelRound');
 };
 
 const playNextRound = () => {

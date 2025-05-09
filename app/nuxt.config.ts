@@ -4,7 +4,10 @@ import { tr } from "@nuxt/ui/runtime/locale/index.js";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/ui'],
+  modules: ['@nuxt/eslint', '@nuxt/ui', 'nuxt-gtag'],
+  gtag: {
+    id: 'GTM-MWBM7N7G'
+  },
   css: ['~/assets/css/main.css'],
   colorMode: {
     preference: 'light'

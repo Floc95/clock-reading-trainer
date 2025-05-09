@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex flex-col grow md:rounded-xl md:border p-6 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-game relative overflow-hidden">
+        <div class="flex flex-col grow md:rounded-xl md:border p-6 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-game relative overflow-hidden md:h-max">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" class="absolute inset-0 w-full"
                 style="z-index: -1;bottom: 0px;top: auto;height: 950px;width: 100%;">
                 <defs>
@@ -13,12 +13,12 @@
                         <stop offset="100%" style="stop-color: #f2af4c; stop-opacity: 1" />
                     </linearGradient>
                 </defs>
-                <circle cx="200" cy="750" r="300" fill="url(#gradient8)" />
-                <ellipse cx="200" cy="540" rx="100" ry="25" fill="url(#gradient9)" />
+                <circle cx="200" cy="830" r="300" fill="url(#gradient8)" />
+                <ellipse cx="200" cy="605" rx="100" ry="25" fill="url(#gradient9)" />
             </svg>
             <div class="flex justify-between items-center mb-4">
                 <div class="grow flex space-x-2">
-                    <div class="bg-info text-white px-4 py-3 rounded-xl text-xs md:text-base flex items-center"
+                    <div class="bg-info text-white px-3 py-1 rounded-xl text-xs md:text-base flex items-center"
                         v-if="step === 'game'">
                         Round: {{ currentRound }}/{{ totalRounds }}
                     </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="mb-4">
-                <h1 class="text-2xl font-bold text-center bg-primary text-white rounded-3xl py-3">Tic Tac Clock</h1>
+                <h1 class="text-2xl font-bold text-center bg-primary text-white rounded-3xl py-3 main-title">Tic Tac Clock</h1>
             </div>
             <div class="grow flex flex-col justify-end">
                 <div class="justify-center flex items-center mb-8 mt-8">
@@ -100,14 +100,14 @@
                         @validateAnswer="handleValidate"
                         @cancelRound="back"
                         @nextRound="handleNextRound" />
+                    <GameScore v-if="step === 'score'"
+                        :score="score"
+                        :totalRounds="totalRounds"
+                        :total-time="elapsedSeconds"
+                        @retry="retry"
+                        @back="back" />
                 </div>
             </div>
-            <GameScore v-if="step === 'score'"
-                :score="score"
-                :totalRounds="totalRounds"
-                :total-time="elapsedSeconds"
-                @retry="retry"
-                @back="back" />
         </div>
     </div>
 </template>
@@ -182,5 +182,23 @@ const time = computed(() => {
 .game-container {
     min-height: 210px;
     max-height: 210px;
+}
+
+.main-title {
+    position: relative;
+}
+
+.main-title:after{
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: #ca554a;
+    z-index: -1;
+    margin-top: -5px;
+    margin-left: -10px;
+    border-radius: 50px;
 }
 </style>

@@ -1,23 +1,25 @@
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col grow">
         <div class="space-y-4">
             <h1 class="text-2xl font-bold text-center">Game Over</h1>
             <div class="text-lg mb-4">
                 <p class="mb-2"><span class="font-semibold">Score:</span> {{ score }}/{{ totalRounds }}</p>
-                <p class="mb-2"><span class="font-semibold">Total Time:</span> {{ formatTime(totalTime) }}</p>
-                <p><span class="font-semibold">Avg Time per Round:</span> {{ formatTime(avgTimePerRound) }}</p>
+                <p class="mb-2"><span class="font-semibold">Total Time:</span> {{ formatTime(totalTime) }} (avg {{ formatTime(avgTimePerRound) }})</p>
             </div>
-            <div class="flex justify-between mt-6">
+            <div class="flex justify-between space-x-4">
                 <UButton
-                    color="neutral"
+                    color="primary"
                     @click="goBack"
-                    icon="i-lucide-arrow-left"
+                    :block="true"
+                    size="xl"
                 >
                     Back
                 </UButton>
                 <UButton
+                    color="success"
                     @click="retry"
-                    trailing-icon="i-lucide-refresh-cw"
+                    :block="true"
+                    size="xl"
                 >
                     Retry
                 </UButton>
@@ -49,6 +51,9 @@ export default defineComponent({
         formatTime(seconds: number): string {
             const mins = Math.floor(seconds / 60);
             const secs = seconds % 60;
+            if (mins <= 0) {
+                return `${secs}s`;
+            }
             return `${mins}m ${secs}s`;
         },
         retry() {

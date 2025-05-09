@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col min-h-screen">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" preserveAspectRatio="none" class="absolute inset-0 w-full h-full"
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" preserveAspectRatio="none" class="absolute inset-0 w-full h-full fixed"
             style="z-index: -1;">
             <defs>
                 <linearGradient id="gradient1" x1="100%" y1="0%" x2="100%" y2="100%">

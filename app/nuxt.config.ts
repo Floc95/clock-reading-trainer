@@ -14,6 +14,12 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'Tic Tac Clock',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+      htmlAttrs: {
+        lang: 'en'
+      },
       link: [
         {
           rel: 'icon',
@@ -61,6 +67,10 @@ export default defineNuxtConfig({
         {
           name: 'msapplication-TileColor',
           content: '#ffffff'
+        },
+        {
+          name: 'theme-color',
+          content: '#ec675b'
         }
       ]
     }

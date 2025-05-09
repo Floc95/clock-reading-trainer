@@ -71,12 +71,12 @@ export default defineComponent({
     methods: {
         getHourIndicatorStyle(n: number): Record<string, string> {
             return {
-                transform: `rotate(${n * 30}deg) translateY(-146px)`,
+                transform: `rotate(${n * 30}deg) translateY(-121px)`,
             };
         },
         getMinuteIndicatorStyle(n: number): Record<string, string> {
             return {
-                transform: `rotate(${n * 6}deg) translateY(-146px)`,
+                transform: `rotate(${n * 6}deg) translateY(-121px)`,
             };
         },
         getHourHandStyle(hour: number, minutes: number): Record<string, string> {
@@ -93,7 +93,7 @@ export default defineComponent({
         },
         getHourNumberStyle(n: number): Record<string, string> {
             const angle = n * 30;
-            const radius = 110;
+            const radius = 90;
             const x = Math.sin((angle * Math.PI) / 180) * radius;
             const y = -Math.cos((angle * Math.PI) / 180) * radius;
             return {
@@ -106,8 +106,8 @@ export default defineComponent({
 
 <style scoped>
 .clock {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     border: 16px solid #9e5cbd;
     border-radius: 50%;
     position: relative;
@@ -164,7 +164,7 @@ export default defineComponent({
 .hour-hand {
     position: absolute;
     width: 12px;
-    height: 65px;
+    height: 55px;
     background-color: #4a376d;
     top: 50%;
     left: calc(50% - 6px);
@@ -177,7 +177,7 @@ export default defineComponent({
 .minute-hand {
     position: absolute;
     width: 12px;
-    height: 90px;
+    height: 75px;
     background-color: #4a376d;
     top: 50%;
     left: calc(50% - 6px);
@@ -208,7 +208,7 @@ export default defineComponent({
     top: calc(50% - 15px);
     left: calc(50% - 15px);
     text-align: center;
-    font-size: 34px;
+    font-size: 28px;
     font-weight: bold;
     color: #4a376d;
     font-weight: 600;

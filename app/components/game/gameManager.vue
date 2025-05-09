@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="flex flex-col grow md:rounded-xl md:border p-6 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-game relative overflow-hidden md:h-max">
+        <div class="flex flex-col grow md:rounded-xl md:border p-4 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-game relative overflow-hidden md:h-max">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" class="absolute inset-0 w-full"
-                style="z-index: -1;bottom: 0px;top: auto;height: 950px;width: 100%;">
+                style="z-index: -1;bottom: 0px;top: auto;height: 900px;width: 100%;">
                 <defs>
                     <linearGradient id="gradient8" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color: #f6ce5e; stop-opacity: 1" />

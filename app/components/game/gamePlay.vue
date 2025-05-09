@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col grow justify-between space-y-4">
+    <div class="flex flex-col grow justify-between">
         <div class="text-center text-xl font-semibold rounded-lg py-2"
             :class="{'bg-success/80 text-white animate-success': !isPlaying && isAnswerCorrect, 'bg-error/70 text-white animate-failure': !isPlaying && !isAnswerCorrect}">
             {{ isPlaying ? 'What time is it?' : (isAnswerCorrect ? 'Correct!' : `Wrong! It is ${gameHour}:${gameMinute < 10 ? '0' + gameMinute : gameMinute}`) }}

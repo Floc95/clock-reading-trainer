@@ -30,6 +30,8 @@
 - [] Animation between steps (setup, play, score), fade-out fade-in ?
 - [X] Redesign to look like GoalUI.png
 - [X] Implement md:max-height for the gameManager div so it looks good on a computer
+- [X] Handle smaller screens height (s23 normal with task bar + nav bar + notifications)
+- [] Make Google Analytics work
 
 # Useless futur ideas
 - [] Achievements (shown as left screen: https://dribbble.com/shots/21972659-Soccer-Live-Scores-App-EallaShot) - Find funnier names, maybe that unlock hidden clock skins ?

@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col grow">
-        <div class="space-y-4">
+        <div>
             <h1 class="text-2xl font-bold text-center">Game Over</h1>
             <div class="text-lg mb-4">
                 <p class="mb-2"><span class="font-semibold">Score:</span> {{ score }}/{{ totalRounds }}</p>
@@ -72,4 +72,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
+h1.text-2xl {
+    font-size: 1.8rem;
+    line-height: 38px;
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="flex flex-col grow md:rounded-xl md:border p-4 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-game relative overflow-hidden md:h-max">
+        <div class="flex flex-col grow md:rounded-xl md:border p-4 max-w md:max-w-lg lg:max-w-md md:mx-auto bg-game relative overflow-hidden md:h-max relative">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" class="absolute inset-0 w-full"
-                style="z-index: -1;bottom: 0px;top: auto;height: 900px;width: 100%;">
+                style="z-index: -1;bottom: 0px;top: auto;height: 840px;width: 100%;">
                 <defs>
                     <linearGradient id="gradient8" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color: #f6ce5e; stop-opacity: 1" />
@@ -16,30 +16,12 @@
                 <circle cx="200" cy="830" r="300" fill="url(#gradient8)" />
                 <ellipse cx="200" cy="605" rx="100" ry="25" fill="url(#gradient9)" />
             </svg>
-            <div class="flex justify-between items-center mb-4">
-                <div class="grow flex space-x-2">
-                    <div class="bg-info text-white px-3 py-1 rounded-xl text-xs md:text-base flex items-center"
-                        v-if="step === 'game'">
-                        Round: {{ currentRound }}/{{ totalRounds }}
-                    </div>
-                </div>
-                <div class="grow flex">
-                    <div class="rounded-xl text-xs md:text-base flex items-center"
-                        v-if="step === 'game'">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="30px" height="30px" viewBox="0 0 24 24" id="timer-9-second" data-name="Flat Line" class="icon flat-line">
-                            <circle id="secondary" cx="12" cy="13.5" r="7.5" style="fill: white; stroke-width: 2;"/>
-                            <polyline id="primary" points="10 14 12 14 12 10" style="fill: none; stroke: #57315c; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
-                            <path id="primary-2" data-name="primary" d="M6.7,8.2,5.2,6.7M17.3,8.2l1.5-1.5M12,6V3m3,0H9m3,3a7.5,7.5,0,1,0,7.5,7.5A7.5,7.5,0,0,0,12,6Z" style="fill: none; stroke: #57315c; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
-                        </svg>
-                        {{ time }}
-                    </div>
-                </div>
-                <div class="shrink-0 align-self-center flex space-x-2">
-                    <UModal>
+            <div class="mb-4 flex items-center justify-between rounded-3xl py-3 bg-primary main-title space-x-4 px-4">
+                <UModal>
                         <UButton
                             size="xl"
                             color="secondary"
-                            class="w-full justify-center rounded-2xl text-regular font-bold"
+                            class="justify-center rounded-2xl text-regular font-bold"
                             style="width: 44px; height: 44px;"
                         >
                         <svg height="200px" width="200px" version="1.1"
@@ -64,11 +46,13 @@
                         </template>
                     </UModal>
 
+                    <h1 class="text-2xl font-bold text-center text-white">Tic Tac Clock</h1>
+
                     <UModal>
                         <UButton
                             size="xl"
                             color="neutral"
-                            class="w-full justify-center rounded-2xl text-regular font-bold"
+                            class="justify-center rounded-2xl text-regular font-bold"
                             style="width: 44px; height: 44px;"
                         >
                             i
@@ -78,13 +62,28 @@
                             <InfoContent></InfoContent>
                         </template>
                     </UModal>
+            </div>
+            <div class="absolute left-0 w-full flex justify-between items-center state-bar px-4">
+                <div class="grow flex space-x-2">
+                    <div class="bg-info text-white px-3 py-1 rounded-xl text-xs md:text-base flex items-center"
+                        v-if="step === 'game'">
+                        Round: {{ currentRound }}/{{ totalRounds }}
+                    </div>
+                </div>
+                <div class="grow flex justify-end">
+                    <div class="rounded-xl text-xs md:text-base flex items-center"
+                        v-if="step === 'game'">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="30px" height="30px" viewBox="0 0 24 24" id="timer-9-second" data-name="Flat Line" class="icon flat-line">
+                            <circle id="secondary" cx="12" cy="13.5" r="7.5" style="fill: white; stroke-width: 2;"/>
+                            <polyline id="primary" points="10 14 12 14 12 10" style="fill: none; stroke: #57315c; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
+                            <path id="primary-2" data-name="primary" d="M6.7,8.2,5.2,6.7M17.3,8.2l1.5-1.5M12,6V3m3,0H9m3,3a7.5,7.5,0,1,0,7.5,7.5A7.5,7.5,0,0,0,12,6Z" style="fill: none; stroke: #57315c; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/>
+                        </svg>
+                        {{ time }}
+                    </div>
                 </div>
             </div>
-            <div class="mb-4">
-                <h1 class="text-2xl font-bold text-center bg-primary text-white rounded-3xl py-3 main-title">Tic Tac Clock</h1>
-            </div>
             <div class="grow flex flex-col justify-end">
-                <div class="justify-center flex items-center mb-8 mt-8">
+                <div class="justify-center flex items-center mb-4 mt-10 relative">
                     <Clock
                         :hour="gameHour"
                         :minutes="gameMinute"
@@ -178,8 +177,12 @@ const time = computed(() => {
 
 <style scoped>
 .game-container {
-    min-height: 210px;
-    max-height: 210px;
+    min-height: 180px;
+    max-height: 180px;
+}
+
+.state-bar {
+    top: 110px;
 }
 
 .main-title {
@@ -191,6 +194,7 @@ const time = computed(() => {
     content: '';
     display: block;
     top: 0;
+    left: 0;
     width: calc(100% + 20px);
     height: calc(100% + 20px);
     background: #ca554a;
@@ -198,5 +202,21 @@ const time = computed(() => {
     margin-top: -5px;
     margin-left: -10px;
     border-radius: 50px;
+}
+
+.main-title .text-2xl {
+    font-size: 1.4rem;
+    line-height: 30px;
+}
+
+@media (min-height: 755px) {
+    .main-title .text-2xl {
+        font-size: 1.4rem;
+        line-height: 51.2px;
+    }
+
+    .state-bar {
+        top: 115px;
+    }
 }
 </style>

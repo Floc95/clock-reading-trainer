@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', '@nuxt/ui', 'nuxt-gtag'],
   gtag: {
-    id: 'GTM-MWBM7N7G'
+    id: 'G-S5VRNDKMJQ'
   },
   css: ['~/assets/css/main.css'],
   colorMode: {
